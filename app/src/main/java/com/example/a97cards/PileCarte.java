@@ -6,15 +6,14 @@ import java.util.Vector;
 public class PileCarte {
     private Vector<Carte> listeCartes;
 
-    public Vector creerCartes() {
+    public PileCarte() {
         listeCartes = new Vector<Carte>(listeCartes);
         for (int i = 1; i < 98; i++)
             listeCartes.add(new Carte(i));
-        return listeCartes;
     }
 
     public void melangerCartes() {
-        Vector listeCartesMelanger = creerCartes();
+        Vector listeCartesMelanger = listeCartes;
         Collections.shuffle(listeCartesMelanger);
         this.listeCartes = listeCartesMelanger;
     }

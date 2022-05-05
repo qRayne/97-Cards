@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#23268871"
+    android:gravity="left"
+    android:orientation="vertical"
+    tools:context=".JeuActivity">
+
+    <LinearLayout
+        android:id="@+id/conteneurEnTete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/titleCarte"
+            android:layout_width="46dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="CARTES RESTANTES" />
+
+        <TextView
+            android:id="@+id/titleTemps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TEMPS"
+            android:translationX="1dp" />
+
+        <TextView
+            android:id="@+id/titleScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SCORE" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/conteneurChiffresEnTete"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/nbCarteRestante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="97"
+            android:translationX="-20dp" />
+
+        <Chronometer
+            android:id="@+id/simpleChronometer"
+            android:countDown="false"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="0"
+            android:translationX="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/conteneurButton"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/buttonParametres"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1.3"
+            android:background="#23268871"
+            android:gravity="center_vertical|fill_vertical|center"
+            android:text="PARAMETRES"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:translationX="-5dp" />
+
+        <Button
+            android:id="@+id/buttonVide"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#23268871"
+            android:gravity="center_vertical|fill_vertical|center"
+            android:textColor="@android:color/black"
+            android:translationX="-8dp" />
+
+        <Button
+            android:id="@+id/buttonMenu"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="#23268871"
+            android:gravity="center_vertical|fill_vertical|center"
+            android:text="MENU"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:translationX="-5dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/conteneurAscendant"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:translationY="10dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/conteneurDescendant"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:translationY="20dp"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/conteneurCartes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:orientation="horizontal"
+        android:translationY="30dp"></LinearLayout>
+
+</LinearLayout>

@@ -126,13 +126,53 @@
         android:orientation="horizontal"
         android:translationY="10dp">
 
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="33dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="375dp"
+            app:srcCompat="@drawable/triangle" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:translationX="-25dp"
+            app:srcCompat="@drawable/triangle" />
+
         <LinearLayout
             android:id="@+id/conteneurAscendantGauche"
             android:layout_width="100dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="#23268871"
             android:orientation="horizontal"
-            android:translationX="50dp"></LinearLayout>
+            android:translationX="0dp">
+
+            <TextView
+                android:id="@+id/card"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordure_carte"
+                android:gravity="top"
+                android:paddingLeft="10dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="5.0"
+                android:shadowDy="5.0"
+                android:shadowRadius="10.0"
+                android:text="0"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/conteneurAscendantDroite"
@@ -140,7 +180,32 @@
             android:layout_height="match_parent"
             android:background="#23268871"
             android:orientation="horizontal"
-            android:translationX="150dp"></LinearLayout>
+            android:translationX="50dp">
+
+            <TextView
+                android:id="@+id/card12"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordure_carte"
+                android:gravity="top"
+                android:paddingLeft="10dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="5.0"
+                android:shadowDy="5.0"
+                android:shadowRadius="10.0"
+                android:text="0"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -157,7 +222,30 @@
             android:layout_height="match_parent"
             android:background="#23268871"
             android:orientation="horizontal"
-            android:translationX="50dp"></LinearLayout>
+            android:translationX="50dp" >
+
+            <TextView
+                android:id="@+id/card9"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/bordure_carte"
+                android:gravity="top"
+                android:paddingLeft="10dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="5.0"
+                android:shadowDy="5.0"
+                android:shadowRadius="10.0"
+                android:text="98"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/conteneurDescendantDroite"
@@ -165,7 +253,31 @@
             android:layout_height="match_parent"
             android:background="#23268871"
             android:orientation="horizontal"
-            android:translationX="150dp"></LinearLayout>
+            android:translationX="150dp">
+
+            <TextView
+                android:id="@+id/card13"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/bordure_carte"
+                android:gravity="top"
+                android:paddingLeft="10dp"
+                android:shadowColor="@android:color/black"
+                android:shadowDx="5.0"
+                android:shadowDy="5.0"
+                android:shadowRadius="10.0"
+                android:text="98"
+                android:textColor="@color/cardview_dark_background"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_columnWeight="1"
+                app:layout_rowWeight="1" />
+        </LinearLayout>
     </LinearLayout>
 
 

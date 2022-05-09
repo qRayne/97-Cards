@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#23268871"
@@ -58,9 +59,9 @@
 
         <Chronometer
             android:id="@+id/simpleChronometer"
-            android:countDown="false"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:countDown="false" />
 
         <TextView
             android:id="@+id/score"
@@ -125,6 +126,21 @@
         android:orientation="horizontal"
         android:translationY="10dp">
 
+        <LinearLayout
+            android:id="@+id/conteneurAscendantGauche"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#23268871"
+            android:orientation="horizontal"
+            android:translationX="50dp"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/conteneurAscendantDroite"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#23268871"
+            android:orientation="horizontal"
+            android:translationX="150dp"></LinearLayout>
     </LinearLayout>
 
     <LinearLayout
@@ -133,14 +149,208 @@
         android:layout_height="100dp"
         android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:translationY="20dp"></LinearLayout>
+        android:translationY="20dp">
 
-    <LinearLayout
-        android:id="@+id/conteneurCartes"
+        <LinearLayout
+            android:id="@+id/conteneurDescendantGauche"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#23268871"
+            android:orientation="horizontal"
+            android:translationX="50dp"></LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/conteneurDescendantDroite"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:background="#23268871"
+            android:orientation="horizontal"
+            android:translationX="150dp"></LinearLayout>
+    </LinearLayout>
+
+
+    <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/Cards"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF"
-        android:orientation="horizontal"
-        android:translationY="30dp"></LinearLayout>
+        android:layout_height="180dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:translationY="50dp"
+        app:columnCount="4"
+        app:rowCount="2">
+
+        <TextView
+            android:id="@+id/card1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card7"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+        <TextView
+            android:id="@+id/card8"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bordure_carte"
+            android:gravity="top"
+            android:paddingLeft="10dp"
+            android:shadowColor="@android:color/black"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowRadius="10.0"
+            android:text="0"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1" />
+
+    </androidx.gridlayout.widget.GridLayout>
 
 </LinearLayout>

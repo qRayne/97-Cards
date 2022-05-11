@@ -122,37 +122,29 @@
         android:id="@+id/conteneurAscendant"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:translationY="10dp">
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="33dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:translationX="375dp"
-            app:srcCompat="@drawable/triangle" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:translationX="-25dp"
-            app:srcCompat="@drawable/triangle" />
+        android:translationY="15dp">
 
         <LinearLayout
             android:id="@+id/conteneurAscendantGauche"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:background="#23268871"
+            android:layout_width="150dp"
+            android:layout_height="match_parent"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:translationX="0dp">
+            android:translationX="30dp">
+
+            <ImageView
+                android:id="@+id/flecheHautAscendantGauche"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_weight="1"
+                android:translationX="5dp"
+                app:srcCompat="@drawable/triangle" />
 
             <TextView
-                android:id="@+id/card"
-                android:layout_width="match_parent"
+                android:id="@+id/deckCardHautGauche"
+                android:layout_width="75dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
@@ -176,21 +168,29 @@
 
         <LinearLayout
             android:id="@+id/conteneurAscendantDroite"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:background="#23268871"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:translationX="50dp">
+            android:translationX="80dp">
+
+            <ImageView
+                android:id="@+id/flecheHautAscendantDroite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_weight="1"
+                android:translationX="5dp"
+                app:srcCompat="@drawable/triangle" />
 
             <TextView
-                android:id="@+id/card12"
-                android:layout_width="match_parent"
+                android:id="@+id/deckCardHautDroite"
+                android:layout_width="75dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="10dp"
-                android:layout_weight="1"
                 android:background="@drawable/bordure_carte"
                 android:gravity="top"
                 android:paddingLeft="10dp"
@@ -208,25 +208,36 @@
         </LinearLayout>
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/conteneurDescendant"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:background="#FFFFFF"
         android:orientation="horizontal"
-        android:translationY="20dp">
+        android:translationX="-1dp"
+        android:translationY="25dp">
 
         <LinearLayout
             android:id="@+id/conteneurDescendantGauche"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:background="#23268871"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:translationX="50dp" >
+            android:translationX="30dp">
+
+            <ImageView
+                android:id="@+id/flecheBasDescendantGauche"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_weight="1"
+                android:rotation="180"
+                android:translationX="5dp"
+                app:srcCompat="@drawable/triangle" />
 
             <TextView
-                android:id="@+id/card9"
-                android:layout_width="match_parent"
+                android:id="@+id/deckCarteBasGauche"
+                android:layout_width="75dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
@@ -249,21 +260,30 @@
 
         <LinearLayout
             android:id="@+id/conteneurDescendantDroite"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="match_parent"
-            android:background="#23268871"
+            android:background="@color/white"
             android:orientation="horizontal"
-            android:translationX="150dp">
+            android:translationX="80dp">
+
+            <ImageView
+                android:id="@+id/flecheBasDescendantDroite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal|center"
+                android:layout_weight="1"
+                android:rotation="180"
+                android:translationX="5dp"
+                app:srcCompat="@drawable/triangle" />
 
             <TextView
-                android:id="@+id/card13"
-                android:layout_width="match_parent"
+                android:id="@+id/deckCarteBasDroite"
+                android:layout_width="75dp"
                 android:layout_height="100dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="10dp"
-                android:layout_weight="1"
                 android:background="@drawable/bordure_carte"
                 android:gravity="top"
                 android:paddingLeft="10dp"
@@ -279,7 +299,6 @@
                 app:layout_rowWeight="1" />
         </LinearLayout>
     </LinearLayout>
-
 
     <androidx.gridlayout.widget.GridLayout
         android:id="@+id/Cards"

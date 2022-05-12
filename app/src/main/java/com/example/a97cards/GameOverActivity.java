@@ -23,6 +23,8 @@ public class GameOverActivity extends AppCompatActivity {
         rejouer = findViewById(R.id.buttonRejouer);
         scoreFinal = findViewById(R.id.textViewScoreFinal);
         ec = new Ecouteur();
+
+        rejouer.setOnClickListener(ec);
     }
 
     private class Ecouteur implements View.OnClickListener{

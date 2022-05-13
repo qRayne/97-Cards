@@ -7,7 +7,7 @@ public class PileCarte {
     private Vector<Carte> listeCartes;
 
     public PileCarte() {
-        listeCartes = new Vector<Carte>(listeCartes);
+        listeCartes = new Vector<Carte>();
         for (int i = 1; i < 98; i++)
             listeCartes.add(new Carte(i));
     }
@@ -16,6 +16,10 @@ public class PileCarte {
         Vector listeCartesMelanger = listeCartes;
         Collections.shuffle(listeCartesMelanger);
         this.listeCartes = listeCartesMelanger;
+    }
+
+    public int tirerCarte(){
+        return listeCartes.remove(listeCartes.size()-1).getChiffre();
     }
 
     public int tailleListeCartes()

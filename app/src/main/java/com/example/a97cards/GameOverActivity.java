@@ -14,7 +14,6 @@ public class GameOverActivity extends AppCompatActivity {
     TextView scoreFinal;
     Ecouteur ec;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

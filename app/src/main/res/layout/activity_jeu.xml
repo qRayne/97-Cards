@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="97"
+            android:text="100"
             android:translationX="-20dp" />
 
         <Chronometer
@@ -71,7 +71,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0"
-            android:translationX="22dp" />
+            android:translationX="24dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -145,7 +145,7 @@
             <TextView
                 android:id="@+id/deckCardHautGauche"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
@@ -162,7 +162,7 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:translationY="5dp"
+                android:translationY="10dp"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1" />
 
@@ -188,7 +188,7 @@
             <TextView
                 android:id="@+id/deckCardHautDroite"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
@@ -205,7 +205,7 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:translationY="5dp"
+                android:translationY="10dp"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1" />
 
@@ -243,7 +243,7 @@
             <TextView
                 android:id="@+id/deckCarteBasGauche"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
@@ -260,7 +260,7 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:translationY="5dp"
+                android:translationY="10dp"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1" />
         </LinearLayout>
@@ -287,7 +287,7 @@
             <TextView
                 android:id="@+id/deckCarteBasDroite"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="80dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="15dp"
@@ -304,7 +304,7 @@
                 android:textColor="@color/cardview_dark_background"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:translationY="5dp"
+                android:translationY="10dp"
                 app:layout_columnWeight="1"
                 app:layout_rowWeight="1" />
         </LinearLayout>

@@ -33,10 +33,10 @@ public class DB extends SQLiteOpenHelper {
 
     public int classementScores(){
         int plusgrosResultat = 0;
-        Cursor c = database.rawQuery("SELECT MAX(score) FROM scores",null);
+        Cursor c = database.rawQuery("SELECT MAX(score) FROM scores",null); // on cherche celui ayant le plus grand score
         c.moveToFirst();
         plusgrosResultat = c.getInt(0);
-        return plusgrosResultat;
+        return plusgrosResultat; // on retourne son resultat
     }
 
     @Override

@@ -118,6 +118,7 @@
             android:translationX="-5dp" />
     </LinearLayout>
 
+
     <LinearLayout
         android:id="@+id/conteneurAscendant"
         android:layout_width="match_parent"
@@ -211,7 +212,6 @@
 
         </LinearLayout>
     </LinearLayout>
-
 
     <LinearLayout
         android:id="@+id/conteneurDescendant"

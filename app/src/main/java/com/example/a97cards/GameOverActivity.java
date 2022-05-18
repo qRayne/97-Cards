@@ -13,6 +13,7 @@ public class GameOverActivity extends AppCompatActivity {
     Button rejouer;
     TextView scoreFinal;
     Ecouteur ec;
+    DB db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,11 @@ public class GameOverActivity extends AppCompatActivity {
         rejouer = findViewById(R.id.buttonRejouer);
         scoreFinal = findViewById(R.id.textViewScoreFinal);
         ec = new Ecouteur();
+        db = DB.getInstance(this);
+
+        String scoreString = getIntent().getExtras().getString("SCORE");
+        db.ajoutScore(db.getWritableDatabase(), new Score(Integer.parseInt(scoreString)));
+        scoreFinal.setText("Your score: "+scoreString);
 
         rejouer.setOnClickListener(ec);
     }

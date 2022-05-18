@@ -31,15 +31,12 @@ public class JeuActivity extends AppCompatActivity {
     TextView nbCartesRestantes, textscore, carteSelectionner;
 
     //Les varibles back-end
-    Vector<String> carteEnleverValeur;
-    Vector<Integer> carteEnleverEmplacement;
+    Partie partie;
     PileCarte pileCarte;
     Score score;
     int scoreAjouter;
     String chiffreSelectionner;
     Boolean findePartie;
-    Integer dernierCarteSurlapile;
-    String dernierCarteSurlapileValeur;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,13 +66,9 @@ public class JeuActivity extends AppCompatActivity {
         chiffreSelectionner = "0";
         score = new Score(0);
         scoreAjouter = 0;
-        findePartie = false;
         pileCarte = new PileCarte();
         pileCarte.melangerCartes();
-        dernierCarteSurlapile = null;
-        dernierCarteSurlapileValeur = null;
-        carteEnleverValeur = new Vector<>();
-        carteEnleverEmplacement = new Vector<>();
+        partie = new Partie();
 
         // Les sets texts
         nbCartesRestantes.setText(String.valueOf(pileCarte.tailleListeCartes()));
@@ -125,8 +118,6 @@ public class JeuActivity extends AppCompatActivity {
                     chiffreSelectionner = null;
                 }
             }
-
-            System.out.println(((TextView) v).getText());
             return true;
         }
 
@@ -156,7 +147,7 @@ public class JeuActivity extends AppCompatActivity {
                 int valeurCarte = Integer.parseInt(chiffreSelectionner);
                 int carteCouranteValeur;
                 TextView carteConteneur = null;
-                TextView endroitDeposeCarte = null;
+                TextView endroitDeposeCarte;
 
                 // trouver dans quel côte le joueur a deposer sa carte
                 if (v.getId() == conteneurAscendantGauche.getId() || v.getId() == conteneurDescendantGauche.getId())
@@ -165,43 +156,41 @@ public class JeuActivity extends AppCompatActivity {
                     carteConteneur = (TextView) conteneur.getChildAt(1);
                 carteCouranteValeur = Integer.parseInt((String) carteConteneur.getText());
 
-                // si c'est du côte ascendant ou descendant
-                if (((LinearLayout) conteneur.getParent()).getId() == conteneurAscendant.getId()) {
-                    if (valeurCarte > carteCouranteValeur || carteCouranteValeur - valeurCarte == 10)
+                // si c'est du côte ascendant ou descendantà
+                if (((((LinearLayout) conteneur.getParent()).getId() == conteneurAscendant.getId()))) {
+                    if (partie.verifierPlacement("ascendant",valeurCarte,carteCouranteValeur))
                         placementEffectuer = true;
-                } else if (valeurCarte < carteCouranteValeur || valeurCarte - carteCouranteValeur == 10)
-                    placementEffectuer = true;
-
+                }
+                else if ((((LinearLayout) conteneur.getParent()).getId() == conteneurDescendant.getId())) {
+                    if (partie.verifierPlacement("descendant",valeurCarte,carteCouranteValeur))
+                        placementEffectuer = true;
+                }
 
                 // si le placement a ete effectuer
                 if (placementEffectuer) {
-                    dernierCarteSurlapile = carteConteneur.getId();
-                    dernierCarteSurlapileValeur = (String) carteConteneur.getText();
+                    partie.setDernierCarteSurlapile(carteConteneur.getId());
+                    partie.setDernierCarteSurlapileValeur((String) carteConteneur.getText());
                     endroitDeposeCarte = carteConteneur;
-                    carteEnleverValeur.add(chiffreSelectionner);
-                    carteEnleverEmplacement.add(carteSelectionner.getId());
-                    nbCartesRestantes.setText(String.valueOf(pileCarte.tailleListeCartes() - carteEnleverValeur.size()));
-                }
+                    partie.carteEnleverValeur.add(chiffreSelectionner);
+                    partie.carteEnleverEmplacement.add(carteSelectionner.getId());
+                    nbCartesRestantes.setText(String.valueOf(pileCarte.tailleListeCartes() -  partie.carteEnleverValeur.size()));
 
 
-                // calculer maintenant le score
-                int scoreCourant = score.getScore();
-                scoreAjouter = Math.abs(valeurCarte - carteCouranteValeur) * 2;
-                if (scoreAjouter < 0)
-                    scoreAjouter = 0;
-                score.setScore(scoreCourant += scoreAjouter);
-                textscore.setText(String.valueOf(score.getScore()));
+                    // calculer maintenant le score
+                    partie.calculerScore(score,valeurCarte,carteCouranteValeur);
+                    textscore.setText(String.valueOf(score.getScore()));
 
 
-                // repiger deux nouvelles cartes après leur placement
-                if (carteEnleverValeur.size() == 2) {
-                    if (pileCarte.tailleListeCartes() > 0) {
-                        for (int i = 0; i < 2; i++){
-                            TextView nouvelleCarte = findViewById(carteEnleverEmplacement.remove(carteEnleverEmplacement.size()-1));
-                            carteEnleverValeur.remove(carteEnleverValeur.size() - 1);
+                    // repiger deux nouvelles cartes après leur placement
+                    if (partie.carteEnleverValeur.size() == 2) {
+                        if (pileCarte.tailleListeCartes() > 0) {
+                            for (int i = 0; i < 2; i++) {
+                                TextView nouvelleCarte = findViewById(partie.carteEnleverEmplacement.remove(partie.carteEnleverEmplacement.size() - 1));
+                                partie.carteEnleverValeur.remove(partie.carteEnleverValeur.size() - 1);
 
-                            int nouvelleValeurCarte = pileCarte.tirerCarte();
-                            nouvelleCarte.setText(String.valueOf(nouvelleValeurCarte));
+                                int nouvelleValeurCarte = pileCarte.tirerCarte();
+                                nouvelleCarte.setText(String.valueOf(nouvelleValeurCarte));
+                            }
                         }
                     }
                 }
@@ -209,6 +198,17 @@ public class JeuActivity extends AppCompatActivity {
                     endroitDeposeCarte = carteSelectionner;
                 }
                 endroitDeposeCarte.setText(chiffreSelectionner);
+
+
+                // verifier si le joueur n'est pas "en situation de fin de partie"
+                if (placementEffectuer){
+                    if (partie.verifierFindePartie() || pileCarte.tailleListeCartes() == 0 && partie.deckVide(deckCartes)){
+                        finish();
+                        Intent intent = new Intent(JeuActivity.this,GameOverActivity.class);
+                        intent.putExtra("SCORE",score.getScore());
+                        startActivity(intent);
+                    }
+                }
                 carteSelectionner = null;
                 chiffreSelectionner = null;
             }

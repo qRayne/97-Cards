@@ -113,7 +113,8 @@ public class JeuActivity extends AppCompatActivity {
             if (event.getAction() == DragEvent.ACTION_DRAG_STARTED) {
                 if (((TextView) v).getText() == chiffreSelectionner)
                     ((TextView) v).setText("");
-            } else if (event.getAction() == DragEvent.ACTION_DRAG_ENDED || event.getAction() == DragEvent.ACTION_DROP) {
+            }
+            else if (event.getAction() == DragEvent.ACTION_DRAG_ENDED || event.getAction() == DragEvent.ACTION_DROP) {
                 if (chiffreSelectionner != null) {
                     carteSelectionner.setText(chiffreSelectionner);
                     chiffreSelectionner = null;

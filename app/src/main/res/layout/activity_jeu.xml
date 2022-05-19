@@ -36,7 +36,7 @@
         <TextView
             android:id="@+id/titleScore"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="SCORE" />
@@ -71,7 +71,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0"
-            android:translationX="24dp" />
+            android:translationX="20dp" />
     </LinearLayout>
 
     <LinearLayout

@@ -221,7 +221,7 @@ public class JeuActivity extends AppCompatActivity {
     }
 
 
-    // cette methode ne peut être ajouter dans la modèle
+    // cette methode ne peut pas être ajouter dans la modèle
     // l'utilisation du findViewById oublige à mettre cette methode dans la vue (JeuActivity)
     public boolean verifierFindePartie() {
         int valeurCartePile;

@@ -71,7 +71,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="0"
-            android:translationX="20dp" />
+            android:translationX="27dp" />
     </LinearLayout>
 
     <LinearLayout

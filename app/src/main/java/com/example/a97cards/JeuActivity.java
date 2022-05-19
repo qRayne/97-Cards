@@ -29,6 +29,8 @@ public class JeuActivity extends AppCompatActivity {
     EcouteurDeck ecouteurDeck;
     Button menu;
     TextView nbCartesRestantes, textscore, carteSelectionner;
+    Integer[] idDeckHaut = {R.id.deckCardHautGauche,R.id.deckCardHautDroite};
+    Integer[] idDeckBas = {R.id.deckCarteBasGauche,R.id.deckCarteBasDroite};
 
     //Les varibles back-end
     Partie partie;
@@ -36,7 +38,6 @@ public class JeuActivity extends AppCompatActivity {
     Score score;
     int scoreAjouter;
     String chiffreSelectionner;
-    Boolean findePartie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +58,6 @@ public class JeuActivity extends AppCompatActivity {
         menu = findViewById(R.id.buttonMenu);
         nbCartesRestantes = findViewById(R.id.nbCarteRestante);
         textscore = findViewById(R.id.score);
-
 
         // Les initialisation de variables
         ecouteurCarte = new EcouteurCarte();
@@ -98,6 +98,8 @@ public class JeuActivity extends AppCompatActivity {
         }
     }
 
+    // J'ai creer deux ecouteur pour mieux repartir le code
+    // L'utilisation d'un seul ecouteur rendrait le code lourd, car le OnDrag sera non seulement utiliser pour la carte, mais aussi pour le deck concerner
     private class EcouteurCarte implements View.OnClickListener, View.OnDragListener, View.OnTouchListener {
 
         @Override
@@ -108,7 +110,6 @@ public class JeuActivity extends AppCompatActivity {
 
         @Override
         public boolean onDrag(View v, DragEvent event) {
-
             if (event.getAction() == DragEvent.ACTION_DRAG_STARTED) {
                 if (((TextView) v).getText() == chiffreSelectionner)
                     ((TextView) v).setText("");
@@ -125,6 +126,7 @@ public class JeuActivity extends AppCompatActivity {
         public boolean onTouch(View v, MotionEvent event) {
             View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(v);
 
+            // on verifie le sdk, car deux methodes peuvent être utiliser pour le startDrag
             if (Build.VERSION.SDK_INT <= 24)
                 v.startDrag(null, shadowBuilder, v, 0);
             else
@@ -171,9 +173,9 @@ public class JeuActivity extends AppCompatActivity {
                     partie.setDernierCarteSurlapile(carteConteneur.getId());
                     partie.setDernierCarteSurlapileValeur((String) carteConteneur.getText());
                     endroitDeposeCarte = carteConteneur;
-                    partie.carteEnleverValeur.add(chiffreSelectionner);
-                    partie.carteEnleverEmplacement.add(carteSelectionner.getId());
-                    nbCartesRestantes.setText(String.valueOf(pileCarte.tailleListeCartes() -  partie.carteEnleverValeur.size()));
+                    partie.getCarteEnleverValeur().add(chiffreSelectionner);
+                    partie.getCarteEnleverEmplacement().add(carteSelectionner.getId());
+                    nbCartesRestantes.setText(String.valueOf(pileCarte.tailleListeCartes() -  partie.getCarteEnleverValeur().size()));
 
 
                     // calculer maintenant le score
@@ -182,11 +184,11 @@ public class JeuActivity extends AppCompatActivity {
 
 
                     // repiger deux nouvelles cartes après leur placement
-                    if (partie.carteEnleverValeur.size() == 2) {
+                    if (partie.getCarteEnleverValeur().size() == 2) {
                         if (pileCarte.tailleListeCartes() > 0) {
                             for (int i = 0; i < 2; i++) {
-                                TextView nouvelleCarte = findViewById(partie.carteEnleverEmplacement.remove(partie.carteEnleverEmplacement.size() - 1));
-                                partie.carteEnleverValeur.remove(partie.carteEnleverValeur.size() - 1);
+                                TextView nouvelleCarte = findViewById(partie.getCarteEnleverEmplacement().remove(partie.getCarteEnleverEmplacement().size() - 1));
+                                partie.getCarteEnleverValeur().remove(partie.getCarteEnleverValeur().size() - 1);
 
                                 int nouvelleValeurCarte = pileCarte.tirerCarte();
                                 nouvelleCarte.setText(String.valueOf(nouvelleValeurCarte));
@@ -202,10 +204,11 @@ public class JeuActivity extends AppCompatActivity {
 
                 // verifier si le joueur n'est pas "en situation de fin de partie"
                 if (placementEffectuer){
-                    if (partie.verifierFindePartie() || pileCarte.tailleListeCartes() == 0 && partie.deckVide(deckCartes)){
+                    if (verifierFindePartie() || pileCarte.tailleListeCartes() == 0 && partie.deckVide(deckCartes)) {
                         finish();
-                        Intent intent = new Intent(JeuActivity.this,GameOverActivity.class);
-                        intent.putExtra("SCORE",score.getScore());
+                        Intent intent = new Intent(JeuActivity.this, GameOverActivity.class);
+                        // on recupère le data du score et on l'envoie dans l'activite concerner
+                        intent.putExtra("SCORE", textscore.getText());
                         startActivity(intent);
                     }
                 }
@@ -214,5 +217,45 @@ public class JeuActivity extends AppCompatActivity {
             }
             return true;
         }
+    }
+
+
+    // cette methode ne peut être ajouter dans la modèle
+    // l'utilisation du findViewById oublige à mettre cette methode dans la vue (JeuActivity)
+    public boolean verifierFindePartie() {
+        int valeurCartePile;
+        int valeurCarteMain;
+        String valeurCarteMainString;
+
+        // on boucle d'abord dans le deck ascendant et ensuite le deck du joueur pour voir si le joueur peut encore mettre des cartes
+        // si le joueur peut mettre des cartes = return false else return true = fin de partie
+        for (Integer id: idDeckHaut){
+            valeurCartePile = Integer.parseInt((String)(((TextView)findViewById(id)).getText()));
+
+            for (int i = 0; i < 8; i++){
+                valeurCarteMainString = (String)((TextView)deckCartes.getChildAt(i)).getText();
+                if (! valeurCarteMainString.contentEquals("")){
+                    valeurCarteMain = Integer.parseInt(valeurCarteMainString);
+                    if (valeurCarteMain > valeurCartePile || valeurCartePile - valeurCarteMain == 10 ) {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        for (Integer id : idDeckBas) {
+            valeurCartePile = Integer.parseInt((String) (((TextView) findViewById(id)).getText()));
+
+            for (int i = 0; i < 8; i++) {
+                valeurCarteMainString = (String) ((TextView) deckCartes.getChildAt(i)).getText();
+                if (!valeurCarteMainString.contentEquals("")) {
+                    valeurCarteMain = Integer.parseInt(valeurCarteMainString);
+                    if (valeurCarteMain < valeurCartePile || valeurCarteMain - valeurCartePile == 10) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

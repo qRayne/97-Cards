@@ -32,6 +32,8 @@ public class DB extends SQLiteOpenHelper {
     }
 
     public int classementScores(){
+        // Ici on recupère le plus grand score de la base de donnees
+        // l'utilisation du MAX(nomColonne) permet de nous retourner le score le plus grand
         int plusgrosResultat = 0;
         Cursor c = database.rawQuery("SELECT MAX(score) FROM scores",null); // on cherche celui ayant le plus grand score
         c.moveToFirst();

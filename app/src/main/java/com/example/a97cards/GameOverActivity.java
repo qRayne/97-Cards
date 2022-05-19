@@ -25,9 +25,13 @@ public class GameOverActivity extends AppCompatActivity {
         ec = new Ecouteur();
         db = DB.getInstance(this);
 
+        // on recoit le data de l'activite source
+        // on ajoute le resultat à la base de donnee, car c'est une fin de partie
+        // transtipe le score dans le text view concerner
         String scoreString = getIntent().getExtras().getString("SCORE");
         db.ajoutScore(db.getWritableDatabase(), new Score(Integer.parseInt(scoreString)));
-        scoreFinal.setText("Your score: "+scoreString);
+        scoreFinal.setText("Votre score : " + scoreString);
+
 
         rejouer.setOnClickListener(ec);
     }

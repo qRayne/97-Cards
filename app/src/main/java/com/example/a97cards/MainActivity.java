@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         highestScore = findViewById(R.id.highestScore);
         ec = new Ecouteur();
 
+        // on recupère le plus grand score avec l'instance de la base de donnee
         highestScore.setText("Le plus grand score enregistre : " + String.valueOf(DB.getInstance(this).classementScores()));
         commencerPartie.setOnClickListener(ec);
     }
